@@ -118,11 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   modifyInput.addEventListener("input", changeModifyButton);
 
-  // abrir el modal
-
-  modifyButton.addEventListener("click", () => {
-    $('#dataModal').modal();
-  })
+  
 
 
 });
