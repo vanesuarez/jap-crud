@@ -72,6 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
   inputName.addEventListener("input", changeAddButton);
   inputLastname.addEventListener("input", changeAddButton);
 
+  // evento y funcion asincronica para el fetch
+
   addBtn.addEventListener("click", async () => {
     try {
       let myHeaders = new Headers();
@@ -102,11 +104,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // put users
 
-  const modifyUserUrl = "https://SECRET.mockapi.io/users/:id";
+
   const modifyButton = document.getElementById("btnPut");
   const modifyInput = document.getElementById("inputPutId");
   const modalName = document.getElementById("inputPutNombre");
   const modalLastname = document.getElementById("inputPutApellido");
+  const saveButton = document.getElementById("btnSendChanges");
+  const modifyUserUrl = `https://65418069f0b8287df1fe6cf3.mockapi.io/users/${modifyInput.value}`; 
+
 
   // activar el boton
   function changeModifyButton() {
@@ -120,6 +125,47 @@ document.addEventListener("DOMContentLoaded", () => {
   modifyInput.addEventListener("input", changeModifyButton);
 
   
-  // PENDIENTE: HACER CODIGO PARA QUE MODIFIQUE UN ELEMENTO Y MUESTRE EN PANTALLA
+  // PENDIENTE A PARTIR DE ESTA LINEA: HACER FUNCIONAR CODIGO PARA QUE MODIFIQUE UN ELEMENTO, 
+  // MOSTRAR EN PANTALLA YA FUNCIONA
+
+  saveButton.addEventListener("click", async () => {
+    try {
+      const data = await response.json();
+      console.log(data);
+      
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      let raw = JSON.stringify({
+        name: modalName.value,
+        lastname: modalLastname.value,
+        id: modifyInput.value
+      });
+
+      var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+
+      await fetch(modifyUserUrl, requestOptions);
+
+      // Después de agregar el elemento, vuelva a mostrar la lista actualizada
+      displayAllUsers();
+
+
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  });
+
+  ////////////////////////////////////
+
+  // delete users
+
+
+
+
 
 });
