@@ -105,7 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const modifyUserUrl = "https://SECRET.mockapi.io/users/:id";
   const modifyButton = document.getElementById("btnPut");
   const modifyInput = document.getElementById("inputPutId");
-  const modal = document.getElementById("dataModal");
+  const modalName = document.getElementById("inputPutNombre");
+  const modalLastname = document.getElementById("inputPutApellido");
 
   // activar el boton
   function changeModifyButton() {
@@ -119,6 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
   modifyInput.addEventListener("input", changeModifyButton);
 
   
-
+  // PENDIENTE: HACER CODIGO PARA QUE MODIFIQUE UN ELEMENTO Y MUESTRE EN PANTALLA
 
 });
