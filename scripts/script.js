@@ -2,9 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("inputGet1Id");
   const searchButton = document.getElementById("btnGet1");
   const container = document.getElementById("results");
-  const inputName = document.getElementById("inputPostNombre");
-  const inputLastname = document.getElementById("inputPostApellido");
-  const addBtn = document.getElementById("btnPost");
 
   const urlGetAllUsers = "https://65418069f0b8287df1fe6cf3.mockapi.io/users";
 
@@ -59,6 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // post users
 
+  const inputName = document.getElementById("inputPostNombre");
+  const inputLastname = document.getElementById("inputPostApellido");
+  const addBtn = document.getElementById("btnPost");
+
   // funcion y event listener para activar el boton
   function changeAddButton() {
     if (inputName.value && inputLastname.value) {
@@ -70,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   inputName.addEventListener("input", changeAddButton);
   inputLastname.addEventListener("input", changeAddButton);
-
 
   addBtn.addEventListener("click", async () => {
     try {
@@ -98,11 +98,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  ////////////////////////////////////
+
   // put users
 
   const modifyUserUrl = "https://SECRET.mockapi.io/users/:id";
-  const modifyButton = document.getElementById("dataModal");
+  const modifyButton = document.getElementById("btnPut");
+  const modifyInput = document.getElementById("inputPutId");
   const modal = document.getElementById("dataModal");
 
-  modifyButton.addEventListener("click", () => {});
+  // activar el boton
+  function changeModifyButton() {
+    if (modifyInput.value) {
+      modifyButton.disabled = false;
+    } else {
+      modifyButton.disabled = true;
+    }
+  }
+
+  modifyInput.addEventListener("input", changeModifyButton);
+
+  // abrir el modal
+
+  modifyButton.addEventListener("click", () => {
+    $('#dataModal').modal();
+  })
+
+
 });
