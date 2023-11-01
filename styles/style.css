@@ -33,3 +33,7 @@
 main {
     min-height: calc(100vh - 210px);
   }
+
+#results p {
+    margin: 2%;
+}
