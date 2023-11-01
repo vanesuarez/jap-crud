@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const urlGetAllUsers = "https://65418069f0b8287df1fe6cf3.mockapi.io/users";
 
-  // get users 
+  // get users
   async function getAllUsers(url) {
     try {
       const response = await fetch(url);
@@ -59,17 +59,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // post users
 
+  // funcion y event listener para activar el boton
+  function changeAddButton() {
+    if (inputName.value && inputLastname.value) {
+      addBtn.disabled = false;
+    } else {
+      addBtn.disabled = true;
+    }
+  }
+
+  inputName.addEventListener("input", changeAddButton);
+  inputLastname.addEventListener("input", changeAddButton);
+
+
   addBtn.addEventListener("click", async () => {
     try {
-      var myHeaders = new Headers();
+      let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
-      var raw = JSON.stringify({
+      let raw = JSON.stringify({
         name: inputName.value,
         lastname: inputLastname.value,
       });
 
-      var requestOptions = {
+      let requestOptions = {
         method: "POST",
         headers: myHeaders,
         body: raw,
@@ -85,26 +98,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // put users
 
+  const modifyUserUrl = "https://SECRET.mockapi.io/users/:id";
+  const modifyButton = document.getElementById("dataModal");
+  const modal = document.getElementById("dataModal");
 
-
-    // put users
-
-    const modifyUserUrl = "https://SECRET.mockapi.io/users/:id"
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
+  modifyButton.addEventListener("click", () => {});
 });
-
-
