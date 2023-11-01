@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const urlGetAllUsers = "https://65418069f0b8287df1fe6cf3.mockapi.io/users";
 
+  // get users 
   async function getAllUsers(url) {
     try {
       const response = await fetch(url);
@@ -34,6 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  getAllUsers(urlGetAllUsers);
+
+  // funcion para mostrar los usuarios y usar en las otras solicitudes
   async function displayAllUsers() {
     try {
       const response = await fetch(urlGetAllUsers);
@@ -51,9 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  getAllUsers(urlGetAllUsers);
+  ///////////////////////////////////////
 
   // post users
+
   addBtn.addEventListener("click", async () => {
     try {
       var myHeaders = new Headers();
@@ -79,6 +84,27 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error:", error);
     }
   });
+
+
+
+
+    // put users
+
+    const modifyUserUrl = "https://SECRET.mockapi.io/users/:id"
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
 });
 
 
