@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const searchInput = document.getElementById("inputGet1Id");
-  const searchButton = document.getElementById("btnGet1");
   const container = document.getElementById("results");
   const errorAlert = document.getElementById("alert-error");
 
@@ -32,6 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // get (search) users
+
+  const searchInput = document.getElementById("inputGet1Id");
+  const searchButton = document.getElementById("btnGet1");
+
   searchButton.addEventListener("click", async () => {
     try {
       const response = await fetch(urlGetAllUsers);
@@ -42,10 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         const searchId = parseInt(searchInput.value);
 
-        // Validación - si el input es un numero y esta dentro del rango
+        // validacion - si el input es un numero
         if (!isNaN(searchId)) {
           const user = data.find((item) => parseInt(item.id) === searchId);
-          console.log(user);
 
           if (user) {
             container.innerHTML = `
@@ -55,10 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             errorAlert.style.display = "none";
 
+            searchInput.value = "";
           } else {
-            // Muestra alerta de error
+            // Muestra alerta de error y no muestra nada en el container
             errorAlert.style.display = "block";
             container.innerHTML = "";
+            searchInput.value = "";
           }
         }
       }
@@ -108,13 +111,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       await fetch(urlGetAllUsers, requestOptions);
 
-      inputName.innerHTML = "";
-      inputLastname.innerHTML = "";
+      inputName.value = "";
+      inputLastname.value = "";
 
       // muestra todos los elementos con el nuevo agregado y limpia los campos
       displayAllUsers();
-      
-
     } catch (error) {
       console.error("Error:", error);
     }
