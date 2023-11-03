@@ -122,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalName = document.getElementById("inputPutNombre");
   const modalLastname = document.getElementById("inputPutApellido");
   const saveButton = document.getElementById("btnSendChanges");
+  const modal = document.getElementById("dataModal");
 
   // activar el boton de modificar
   function changeModifyButton() {
@@ -163,10 +164,12 @@ document.addEventListener("DOMContentLoaded", () => {
       let response = await fetch(modifyUserURL, requestOptions);
 
       if (!response.ok) {
-        saveButton.setAttribute("data-bs-dismiss", "modal");
         showErrorAlert(response);
       } else {
         displayAllUsers();
+        modifyInput.value = "";
+        modalName.value = "";
+        modalLastname.value = "";
       }
     } catch (error) {
       console.error("Error:", error);
