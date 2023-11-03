@@ -70,8 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  ///////////////////////////////////////
-
   // post users
 
   const inputName = document.getElementById("inputPostNombre");
@@ -80,11 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // funcion y event listener para activar el boton
   function changeAddButton() {
-    if (inputName.value && inputLastname.value) {
-      addBtn.disabled = false;
-    } else {
-      addBtn.disabled = true;
-    }
+    addBtn.disabled = !(inputName.value && inputLastname.value);
   }
 
   inputName.addEventListener("input", changeAddButton);
@@ -121,8 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  ////////////////////////////////////
-
   // put (modify) users
 
   const modifyButton = document.getElementById("btnPut");
@@ -133,22 +125,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // activar el boton de modificar
   function changeModifyButton() {
-    if (modifyInput.value) {
-      modifyButton.disabled = false;
-    } else {
-      modifyButton.disabled = true;
-    }
+    modifyButton.disabled = !modifyInput.value;
   }
 
   modifyInput.addEventListener("input", changeModifyButton);
 
   // activar el boton de guardar
   function changeSaveButton() {
-    if (modalName.value && modalLastname.value) {
-      saveButton.disabled = false;
-    } else {
-      saveButton.disabled = true;
-    }
+    saveButton.disabled = !(modalName.value && modalLastname.value);
   }
 
   modalName.addEventListener("input", changeSaveButton);
@@ -189,8 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  ////////////////////////////////////
-
   // delete users
 
   const deleteButton = document.getElementById("btnDelete");
@@ -198,11 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // funcion y event listener para activar el boton
   function changeDeleteButton() {
-    if (deleteInput.value) {
-      deleteButton.disabled = false;
-    } else {
-      deleteButton.disabled = true;
-    }
+    deleteButton.disabled = !deleteInput.value;
   }
 
   deleteInput.addEventListener("input", changeDeleteButton);
