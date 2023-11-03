@@ -37,3 +37,7 @@ main {
 #results p {
     margin: 2%;
 }
+
+#alert-error {
+    display: none;
+}
